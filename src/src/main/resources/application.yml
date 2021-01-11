@@ -1,0 +1,42 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  jpa:
+    database: POSTGRESQL
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false
+    database-plataform: org.hibernate.dialect.PostgreSQL9Dialect
+    hibernate:
+      ddl-auto: 'create-drop'
+    show-sql: true
+    open-in-view: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/rh
+    username: postgres
+    password: root
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 716589456466-vpk6oiljg23pm7r1nubs1v16t0o3bgbn.apps.googleusercontent.com
+            client-secret: dY98Vj8Wx100Rm8DlI_jF4Kl
+
+logging:
+  level:
+    org:
+      springframework:
+        web: INFO
+
+jwt:
+  secret: 1234
+  timeoutInMilli: 1234
+
+config:
+  url:
+    github: httpAlgumaCoisa
+
+
