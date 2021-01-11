@@ -11,14 +11,14 @@ import javax.security.auth.login.LoginException;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/login")
+@RequestMapping(value = "/v1")
 @CrossOrigin(value = "*")
 public class LoginController {
 
     @Autowired
     private UserService service;
 
-    @PostMapping
+    @PostMapping("/login")
     @ApiOperation(value="loga um usuário")// verificar necessidade
     public ResponseEntity create(@Valid @RequestBody String dto) throws LoginException {
         return ResponseEntity
