@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>RH</title>
+    <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+</head>
+
+<body>
+
+<h3>Formulário de Entrada</h3>
+<form action="#" th:action="@{/v1/u/cadastrar}" th:object="${user}" method="POST">
+    <div class="form-inline">
+    <input  type="hidden" th:field="*{id}" />
+    <p>nome <input class="form-group mx-sm-3 mb-2" required type="text" th:field="*{name}" /></p>
+    <p>Gênero <input type="text" placeholder="m ou f" th:field="*{gender}" /></p>
+    <p>email: <input type="text" th:field="*{email}" /></p>
+    <p>Data de Nasc: <input type="text" placeholder="dd/mm/yyyy" th:field="*{dtBirth}" required/></p>
+    <p>Naturalidade: <input type="text" th:field="*{naturalness}" /></p>
+    <p>Nacionalidade: <input type="text" th:field="*{nationality}" /></p>
+    <p>CPF: <input type="text" th:field="*{cpf}" /></p>
+    <input type="hidden" th:field="*{dtCreation}" />
+    <input type="hidden" th:field="*{dtUpdate}" />
+    </div>
+    <p><button type="submit" class="btn btn-primary">Submit</button></p>
+</form>
+
+</body>
+<script type="text/javascript" th:src="@{/js/jquery.mask.min.js}"></script>
+
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>RH</title>
+    <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+<body>
+
+<div th:if="${not #lists.isEmpty(userList)}">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">No.</th>
+            <th scope="col">nome</th>
+            <th scope="col">gênero</th>
+            <th scope="col">email</th>
+            <th scope="col">data de nascimento</th>
+            <th scope="col" >naturalidade</th>
+            <th scope="col">nacionalidade</th>
+            <th scope="col">cpf</th>
+            <th scope="col">Data de criação</th>
+            <th scope="col" >Data de Atualização</th>
+            <th scope="col">Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        <div th:each="user, iter : ${userList}">
+            <tr colspan="6" data-toggle="collapse"
+                th:attr="data-target='#demo'+${iter.index+1}"
+                th:class="${iter.index}%2==0? 'even accordion-toggle':'accordion-toggle odd'">
+                <td scope="row" th:text="${iter.index + 1}"></td>
+                <td th:utext="${user.name}"></td>
+                <td th:utext="${user.gender}"></td>
+                <td th:text="${user.email}"></td>
+                <td th:text="${user.dtBirth}"></td>
+                <td th:utext="${user.naturalness}"></td>
+                <td th:utext="${user.nationality}"></td>
+                <td th:text="${user.cpf}"></td>
+                <td th:text="${user.dtCreation}"></td>
+                <td th:utext="${user.dtUpdate}"></td>
+                <td>
+                    <div class="item-3">
+                        <p><a th:href="@{'/v1/u/'(id=${user.id})}">Atualizar</a>
+                            <a th:href="@{'/v1/u/deletar'(id=${user.id})}">Atualizar</a></p>
+                    </div>
+                </td>
+            </tr>
+        </div>
+        </tbody>
+    </table>
+</div>
+<div th:if="${#lists.isEmpty(userList)}">
+    Lista vazia.
+</div>
+
+</body>
+
+</html>
